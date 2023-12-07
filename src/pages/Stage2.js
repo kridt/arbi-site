@@ -13,7 +13,7 @@ export default function Stage2() {
     if (sites?.length === 0) {
       setCleanSites(true);
     }
-  }, []);
+  }, [sites?.length]);
 
   async function handleSubmit(e) {
     e.preventDefault();
