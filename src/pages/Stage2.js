@@ -18,14 +18,14 @@ export default function Stage2() {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    const formData = new FormData(e.target);
 
     const data = {
-      name: formData.get("name"),
-      age: formData.get("age").split("-").reverse().join("-"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      referal: formData.get("referal"),
+      name: e.target.name.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      age: e.target.age.value,
+      referal: e.target.referal.value,
+
       sites: cleanSites ? "clean" : sites,
       dato: new Date()
         .toISOString()
@@ -37,15 +37,13 @@ export default function Stage2() {
 
     console.log(data);
 
-    axios
+    await axios
       .post("https://arbi-server.onrender.com/api/start", data)
       .then((res) => {
         console.log(res);
         setLoading(false);
         navigate("/thanks");
       });
-
-    setLoading(false);
   }
 
   return (
