@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AgeRestrictedDatePicker from "../components/over18";
 import axios from "axios";
+import Roatatingdots from "../components/Roatatingdots";
 
 export default function Stage2() {
   const sites = JSON.parse(localStorage.getItem("sites"));
@@ -60,14 +61,7 @@ export default function Stage2() {
             backgroundColor: "rgba(0,0,0,0.7)",
           }}
         >
-          <h1
-            style={{
-              fontSize: "5rem",
-              textAlign: "center",
-            }}
-          >
-            Loading...
-          </h1>
+          <Roatatingdots />
         </div>
       ) : null}
 
@@ -163,7 +157,6 @@ export default function Stage2() {
             name="referal"
             placeholder="5 cifret ID"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-black"
-            required
           />
         </div>
 
