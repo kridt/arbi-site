@@ -9,6 +9,7 @@ export default function Stage2() {
   const navigate = useNavigate();
   const [cleanSites, setCleanSites] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [referal, setReferal] = React.useState("Du har ikke nogen referal");
 
   React.useEffect(() => {
     if (sites?.length === 0) {
@@ -44,6 +45,14 @@ export default function Stage2() {
         console.log(res);
         setLoading(false);
         navigate("/thanks");
+      });
+  }
+
+  async function findReferal(referalNumber) {
+    await axios
+      .post("https://arbi-server.onrender.com/api/api/referal")
+      .then((res) => {
+        console.log(res);
       });
   }
 
@@ -149,16 +158,25 @@ export default function Stage2() {
         <div className="mb-4">
           <label htmlFor="referal">
             Og som det sidste sprøgsmål, er der nogen der har refereret dig til
-            os? så skriv deres 5 cifrede ID her
+            os? så skriv deres 4 cifrede ID her
           </label>
           <input
             type="number"
             id="referal"
             name="referal"
-            placeholder="5 cifret ID"
+            onChange={(e) => {
+              if (e.target.value.length === 4) {
+                findReferal(e.target.value);
+                setReferal("Du har valgt en referal");
+              } else {
+                setReferal("Du har ikke nogen referal");
+              }
+            }}
+            placeholder="4 cifret ID"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-black"
           />
         </div>
+        <p>{referal}</p>
 
         <div className="mt-8">
           <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
