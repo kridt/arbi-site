@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import AgeRestrictedDatePicker from "../components/over18";
 import axios from "axios";
 import Roatatingdots from "../components/Roatatingdots";
+import "./Stage2.css";
 
 export default function Stage2() {
   const sites = JSON.parse(localStorage.getItem("sites"));
   const navigate = useNavigate();
   const [cleanSites, setCleanSites] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [loadingRefeal, setLoadingRefeal] = React.useState(false);
   const [referal, setReferal] = React.useState("Du har ikke nogen referal");
 
   React.useEffect(() => {
@@ -49,11 +51,24 @@ export default function Stage2() {
   }
 
   async function findReferal(referalNumber) {
+    setLoadingRefeal(true);
     await axios
-      .post("https://arbi-server.onrender.com/api/api/referal")
+      .post("https://arbi-server.onrender.com/api/referal", {
+        referal: parseInt(referalNumber),
+      })
       .then((res) => {
         console.log(res);
+
+        if (res.status === 200) {
+          setReferal("Du har valgt at referere " + res.data.name);
+          setLoadingRefeal(false);
+        } else {
+          setReferal("Der er ikke nogen med det ID");
+          setLoadingRefeal(false);
+        }
       });
+
+    setLoadingRefeal(false);
   }
 
   return (
@@ -164,11 +179,12 @@ export default function Stage2() {
             type="number"
             id="referal"
             name="referal"
+            disabled={loadingRefeal}
             onChange={(e) => {
               if (e.target.value.length === 4) {
                 findReferal(e.target.value);
-                setReferal("Du har valgt en referal");
               } else {
+                setLoadingRefeal(false);
                 setReferal("Du har ikke nogen referal");
               }
             }}
@@ -176,7 +192,11 @@ export default function Stage2() {
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-black"
           />
         </div>
-        <p>{referal}</p>
+        {loadingRefeal ? (
+          <p className="blinking">Leder efter din referal...</p>
+        ) : (
+          <p>{referal}</p>
+        )}
 
         <div className="mt-8">
           <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">

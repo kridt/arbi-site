@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Start() {
   const navigate = useNavigate();
@@ -16,6 +17,12 @@ export default function Start() {
     "Expekt",
     "CashPoint",
   ];
+
+  useEffect(() => {
+    axios.get("https://arbi-server.onrender.com/api/wakeUp").then((res) => {
+      console.log(res.data);
+    });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
