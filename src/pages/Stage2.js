@@ -40,18 +40,20 @@ export default function Stage2() {
     };
 
     console.log(data);
-    //https://arbi-server.onrender.com
-    await axios.post("http://localhost:1234/api/start", data).then((res) => {
-      console.log(res);
-      setLoading(false);
-      navigate("/thanks");
-    });
+    //
+    await axios
+      .post("https://arbi-server.onrender.com/api/start", data)
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+        navigate("/thanks");
+      });
   }
 
   async function findReferal(referalNumber) {
     setLoadingRefeal(true);
     await axios
-      .post("http://localhost:1234/api/referal", {
+      .post("https://arbi-server.onrender.com/api/referal", {
         referal: parseInt(referalNumber),
         admin: localStorage.getItem("arbiwebAdmin"),
       })
