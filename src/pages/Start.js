@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { db } from "../firebase";
 export default function Start() {
   const navigate = useNavigate();
-  const sites = [
+  const admin = localStorage.getItem("arbiwebAdmin");
+  const [sites, setSites] = useState([
     "Betfair",
     "Unibet",
     "Bet365",
@@ -16,12 +18,18 @@ export default function Start() {
     "Tipwin",
     "Expekt",
     "CashPoint",
-  ];
+  ]);
 
   useEffect(() => {
     axios.get("https://arbi-server.onrender.com/api/wakeUp").then((res) => {
       console.log(res.data);
     });
+
+    if (admin === null) {
+      navigate("/");
+    } else {
+      console.log(admin);
+    }
   }, []);
 
   function handleSubmit(e) {

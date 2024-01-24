@@ -61,6 +61,7 @@ export default function Stage2() {
 
         if (res.status === 200) {
           setReferal("Du har valgt at referere " + res.data.name);
+
           setLoadingRefeal(false);
         } else {
           setReferal("Der er ikke nogen med det ID");

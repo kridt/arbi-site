@@ -1,7 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function LandingPage() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id === undefined) {
+      navigate("/oupYxAriFzUIFZuECtrYisK7AgV2");
+    } else {
+      localStorage.setItem("arbiwebAdmin", id);
+    }
+  }, [id, navigate]);
+
   return (
     <div className="bg-slate-900 text-white min-h-screen">
       <div className="container mx-auto py-10">
@@ -10,6 +21,7 @@ export default function LandingPage() {
         </h1>
         <p className="text-lg mb-8">
           Vil du tjene 1500 kr. på bare 3 timer? Så er du kommet til det rette
+          sted.
         </p>
         <Link
           to={"/start"}
