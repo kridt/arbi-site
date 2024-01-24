@@ -13,9 +13,9 @@ export default function Admin() {
   const [sites, setSites] = useState([]);
 
   useEffect(() => {
-    if (auth.currentUser) {
-      console.log(auth.currentUser);
-      if (auth.currentUser.uid === "oupYxAriFzUIFZuECtrYisK7AgV2") {
+    if (auth?.currentUser) {
+      console.log(auth?.currentUser);
+      if (auth?.currentUser?.uid === "oupYxAriFzUIFZuECtrYisK7AgV2") {
         setOwner(true);
         db.collection("admins")
           .get()
@@ -23,7 +23,7 @@ export default function Admin() {
             setSites(querySnapshot.docs);
           });
       }
-      setUser(auth.currentUser);
+      setUser(auth?.currentUser);
     } else {
       console.log("No user");
       navigate("/login");
@@ -36,7 +36,7 @@ export default function Admin() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    await auth.createUserWithEmailAndPassword(email, password).then((user) => {
+    await auth?.createUserWithEmailAndPassword(email, password).then((user) => {
       console.log(user);
       db.collection("admins")
         .doc(user.user.uid)
@@ -61,7 +61,7 @@ export default function Admin() {
         .then(() => {
           console.log("Document successfully written!");
           setLoading(false);
-          auth.signOut();
+          auth?.signOut();
           navigate("/login");
         })
         .catch((error) => {
@@ -78,7 +78,7 @@ export default function Admin() {
           "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-1"
         }
         onClick={() => {
-          auth.signOut();
+          auth?.signOut();
           navigate("/login");
         }}
       >
@@ -88,7 +88,7 @@ export default function Admin() {
         Dit link er:
         <a
           target="_blank"
-          href={"https://arbiweb.vercel.app/" + auth.currentUser.uid}
+          href={"https://arbiweb.vercel.app/" + auth?.currentUser?.uid}
         >
           arbiweb.vercel.app/{auth?.currentUser?.uid}
         </a>
