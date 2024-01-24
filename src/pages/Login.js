@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      navigate("/admin");
+    } else {
+      console.log("No user");
+    }
+  });
+
   function handleLogin(e) {
     e.preventDefault();
     const email = e.target.email.value;

@@ -30,6 +30,18 @@ export default function Start() {
     } else {
       console.log(admin);
     }
+
+    db.collection("admins")
+      .doc(admin)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const sites = doc.data().sites;
+          setSites(sites);
+        } else {
+          console.log("No such document!");
+        }
+      });
   }, []);
 
   function handleSubmit(e) {

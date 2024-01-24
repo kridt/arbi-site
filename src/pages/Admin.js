@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import YourSites from "../components/YourSites";
+import YourReferals from "../components/YourReferals";
+import YourCustomers from "../components/YourCustomers";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -10,17 +12,16 @@ export default function Admin() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [owner, setOwner] = useState(false);
-  const [sites, setSites] = useState([]);
+  const [sites, setSitess] = useState([]);
 
   useEffect(() => {
     if (auth?.currentUser) {
-      console.log(auth?.currentUser);
       if (auth?.currentUser?.uid === "oupYxAriFzUIFZuECtrYisK7AgV2") {
         setOwner(true);
         db.collection("admins")
           .get()
           .then((querySnapshot) => {
-            setSites(querySnapshot.docs);
+            setSitess(querySnapshot.docs);
           });
       }
       setUser(auth?.currentUser);
@@ -84,19 +85,32 @@ export default function Admin() {
       >
         Log ud
       </button>
-      <h1>
-        Dit link er:
+      <h1 className="m-3">
+        Dit link er:{" "}
         <a
           target="_blank"
+          rel="noreferrer"
           href={"https://arbiweb.vercel.app/" + auth?.currentUser?.uid}
         >
-          arbiweb.vercel.app/{auth?.currentUser?.uid}
+          https://arbiweb.vercel.app/{auth?.currentUser?.uid}
         </a>
       </h1>
 
-      <div>
-        dine sider
-        <YourSites uid={auth?.currentUser?.uid} />
+      <div className="flex justify-evenly max-w-80">
+        <div>
+          <YourSites uid={auth?.currentUser?.uid} />
+        </div>
+
+        <div className="max-w-xs">
+          <div className="bg-blue-900 w-80">
+            <YourCustomers uid={auth?.currentUser?.uid} />
+          </div>
+        </div>
+        <div>
+          <div className="bg-blue-900 w-80">
+            <YourReferals uid={auth?.currentUser?.uid} />
+          </div>
+        </div>
       </div>
 
       <div>
