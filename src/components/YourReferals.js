@@ -50,6 +50,7 @@ export default function YourReferals({ uid }) {
           Tilføj referal
         </button>
       </div>
+      <p>Du har {referals?.length} referals</p>
       <div>
         {referals?.map((referal) => {
           return (
@@ -58,8 +59,8 @@ export default function YourReferals({ uid }) {
               className="bg-blue-500 m-3 rounded-lg mb-6"
             >
               <p>{referal.data().name}</p>
-              <p>{referal.data().email}</p>
-              <p>{referal.data().phone}</p>
+              <p>Email: {referal.data().email}</p>
+              <p>Tlf: {referal.data().phone}</p>
               <p>Nummer: {referal.data().referal}</p>
             </div>
           );

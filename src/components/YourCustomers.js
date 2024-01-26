@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 export default function YourCustomers({ uid }) {
   const [customers, setCustomers] = useState([]);
@@ -16,9 +17,14 @@ export default function YourCustomers({ uid }) {
 
   return (
     <div>
-      <h1>Your Customers</h1>
+      <div className="flex justify-between">
+        <h1>Dine Kunder</h1>
+        <Link className="underline" to="/admin/kundeliste">
+          Gå til kundeliste
+        </Link>
+      </div>
+      <p>Du har {customers?.length} kunder på i kø</p>
       {customers?.map((customer) => {
-        console.log(customer.data());
         return (
           <div className="m-4 bg-slate-800 rounded-md" key={customer.id}>
             <p>dato: {customer?.data()?.dato}</p>
