@@ -123,6 +123,11 @@ export default function CustomerList() {
         <p>Antal på listen: {clients?.length}</p>
         {clients?.map((client) => {
           const clientData = client?.data();
+          var referral = clientData?.referal;
+
+          if (referral === "") {
+            referral = "Ingen Referral";
+          }
           return (
             <div
               className="m-4 bg-slate-800 rounded-md flex justify-between p-5"
