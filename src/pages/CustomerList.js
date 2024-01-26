@@ -133,6 +133,7 @@ export default function CustomerList() {
                 <p>Navn: {client?.data()?.name}</p>
                 <p>Tlf: {client?.data()?.phone}</p>
                 <p>Email: {client?.data()?.email}</p>
+                <p>Referral: {client?.data()?.referal}</p>
                 <p>oprettede sider: {client?.data()?.sites?.length}</p>
               </div>
               <div>
@@ -161,6 +162,7 @@ export default function CustomerList() {
         <p>Antal på listen: {archived?.length}</p>
 
         {archived?.map((client) => {
+          console.log(client);
           return (
             <div
               key={`${client?.dato + client?.admin + client?.archivedAt}`}
@@ -168,6 +170,7 @@ export default function CustomerList() {
             >
               <p>Kunde oprettet: {client?.dato}</p>
               <p>Kundens antal sider: {client?.sites.length}</p>
+              <p>Kundens navn: {client?.referal}</p>
             </div>
           );
         })}
