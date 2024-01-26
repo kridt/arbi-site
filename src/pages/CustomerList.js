@@ -138,7 +138,7 @@ export default function CustomerList() {
                 <p>Navn: {client?.data()?.name}</p>
                 <p>Tlf: {client?.data()?.phone}</p>
                 <p>Email: {client?.data()?.email}</p>
-                <p>Referral: {client?.data()?.referal}</p>
+                <p>Referral: {referral}</p>
                 <p>oprettede sider: {client?.data()?.sites?.length}</p>
               </div>
               <div>
