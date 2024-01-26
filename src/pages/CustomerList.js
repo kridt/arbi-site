@@ -163,6 +163,10 @@ export default function CustomerList() {
 
         {archived?.map((client) => {
           console.log(client);
+          var referral = client?.referal;
+          if (referral === "") {
+            referral = "Ingen Referral";
+          }
           return (
             <div
               key={`${client?.dato + client?.admin + client?.archivedAt}`}
@@ -170,7 +174,7 @@ export default function CustomerList() {
             >
               <p>Kunde oprettet: {client?.dato}</p>
               <p>Kundens antal sider: {client?.sites.length}</p>
-              <p>Kundens navn: {client?.referal}</p>
+              <p>Referral: {referral}</p>
             </div>
           );
         })}
