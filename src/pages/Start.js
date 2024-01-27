@@ -21,10 +21,6 @@ export default function Start() {
   ]);
 
   useEffect(() => {
-    axios.get("https://arbi-server.onrender.com/api/wakeUp").then((res) => {
-      console.log(res.data);
-    });
-
     if (admin === null) {
       navigate("/");
     } else {
@@ -64,8 +60,9 @@ export default function Start() {
       <form onSubmit={(e) => handleSubmit(e)} className="w-1/2 m-auto">
         <div className="mb-4">
           <label htmlFor="siteName" className="block font-medium mb-2">
-            Her er alle de gambling sites vi kommer til at bruge, tjek af fra
-            listen over de sites du allerede har en konto på
+            Her er alle de gamblingsites vi kommer til at bruge, tjek af fra
+            listen over de sites du allerede har en konto på (En konto, hvor
+            bonus IKKE er brugt, skal IKKE vinges af)
           </label>
         </div>
 

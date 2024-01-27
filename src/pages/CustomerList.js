@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 export default function CustomerList() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [clients, setClients] = useState([]);
   const [archived, setArchived] = useState([]);
 

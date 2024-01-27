@@ -115,15 +115,16 @@ export default function Stage2() {
 
         <br />
         <p>
-          For at være helt ærlige fortrækker vi selfølgelig at man ikke er
-          tilmeldt nogen af siderne, men det kan godt lade sig gøre alligevel
+          For at være helt ærlige foretrækker vi selvfølgelig at du ikke er
+          tilmeldt nogen af siderne, men det kan godt lade sig gøre alligevel.
         </p>
         <br />
 
         <label htmlFor="info">
-          Nå, men lad os se at komme igang, vi skal starte med at du lige
-          skriver din info hernede under, og du vil herefter blive kontaktet af
-          en af vores fantastiske medarbejdere
+          Nå, men lad os se at komme igang, til at begynde med skal vi bede dig
+          om at udfylde din info i de tomme felter nedenunder. Herefter vil du
+          inden for kort tid, blive kontaktet af en af vores fantastiske
+          medarbejdere.
         </label>
         <br />
         <br />
