@@ -6,6 +6,7 @@ import Thanks from "./pages/Thanks";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import CustomerList from "./pages/CustomerList";
+import Custemize from "./pages/Custemize";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/kundeliste" element={<CustomerList />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/change" element={<Custemize />} />
       </Routes>
     </BrowserRouter>
   );

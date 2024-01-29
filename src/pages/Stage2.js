@@ -99,7 +99,10 @@ export default function Stage2() {
           <h1>
             Så vi er enige om du er tilmeldt på absolut ingen af siderne? hvis
             ikke tryk{" "}
-            <Link className="text-blue-600" to={"/"}>
+            <Link
+              className="text-blue-600"
+              to={"/" + localStorage.getItem("arbiwebAdmin")}
+            >
               her!
             </Link>
           </h1>

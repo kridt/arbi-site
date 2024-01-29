@@ -96,6 +96,8 @@ export default function Admin() {
         </a>
       </h1>
 
+      <Link to={"/change"}>Ændre dine kunders view</Link>
+
       <div className="flex justify-evenly max-w-80">
         <div>
           <YourSites uid={auth?.currentUser?.uid} />
