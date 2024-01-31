@@ -12,7 +12,7 @@ export default function Custemize() {
     text: "Vil du tjene 1500 kr. på bare 3 timer? Så er du kommet til det rette sted.",
   });
 
-  useEffect(() => {
+  /*  useEffect(() => {
     if (auth?.currentUser) {
       console.log(auth?.currentUser);
 
@@ -23,6 +23,7 @@ export default function Custemize() {
           .then((doc) => {
             setUser(doc.data());
             if (doc.exists) {
+              console.log("Document data:", doc.data());
               setWellcome({
                 title: doc?.data()?.config?.velkomstSide?.title,
                 text: doc?.data()?.config?.velkomstSide?.text,
@@ -42,7 +43,7 @@ export default function Custemize() {
       console.log("No user");
       navigate("/login");
     }
-  }, [navigate, user, wellcome.title, wellcome.text]);
+  }, []); */
   console.log(user);
   async function newWellcome(e) {
     e.preventDefault();
@@ -67,6 +68,25 @@ export default function Custemize() {
       });
   }
 
+  useEffect(() => {
+    db.collection("admins")
+      .doc(auth?.currentUser?.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+          setWellcome({
+            title: doc?.data()?.config?.velkomstSide?.title,
+            text: doc?.data()?.config?.velkomstSide?.text,
+          });
+          setLoading(false);
+        } else {
+          console.log("No such document!");
+          alert("der er sket en fejl, prøv igen senere");
+        }
+      });
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -86,7 +106,7 @@ export default function Custemize() {
           <label>Titel</label>
           <input
             className="text-black"
-            defaultValue={wellcome.title}
+            value={wellcome.title}
             type="text"
             name="title"
             onChange={(e) =>
@@ -96,7 +116,7 @@ export default function Custemize() {
           <label>tekst</label>
           <textarea
             className="text-black"
-            defaultValue={wellcome.text}
+            value={wellcome.text}
             type="text"
             name="text"
             onChange={(e) => setWellcome({ ...wellcome, text: e.target.value })}
