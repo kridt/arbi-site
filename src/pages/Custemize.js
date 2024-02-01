@@ -129,7 +129,6 @@ export default function Custemize() {
             >
               <Tab label="Velkomst Side" value="1" />
               <Tab label="Valg af bettingsider" value="2" />
-              <Tab label="Item Three" value="3" />
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -228,7 +227,6 @@ export default function Custemize() {
               </div>
             </div>
           </TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
         </TabContext>
       </Box>
     </div>
