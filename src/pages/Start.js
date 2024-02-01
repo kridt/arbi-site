@@ -5,6 +5,11 @@ import { db } from "../firebase";
 export default function Start() {
   const navigate = useNavigate();
   const admin = localStorage.getItem("arbiwebAdmin");
+  const [loading, setLoading] = useState(true);
+  const [config, setConfig] = useState({
+    title: "Arbitrage Bereau - Start her",
+    text: "Her er alle de gamblingsites vi kommer til at bruge, tjek af fra listen over de sites du allerede har en konto på (En konto, hvor bonus IKKE er brugt, skal IKKE vinges af)",
+  });
   const [sites, setSites] = useState([
     "Betfair",
     "Unibet",
@@ -34,6 +39,8 @@ export default function Start() {
         if (doc.exists) {
           const sites = doc.data().sites;
           setSites(sites);
+          setConfig(doc?.data()?.config?.bettingSide);
+          setLoading(false);
         } else {
           console.log("No such document!");
         }
@@ -52,17 +59,20 @@ export default function Start() {
     navigate("/stage2");
   }
 
+  if (loading) {
+    return (
+      <div className="bg-slate-900 text-white min-h-screen">Loading...</div>
+    );
+  }
   return (
     <div className="bg-slate-900 text-white min-h-screen">
       <h2 className="text-2xl font-bold mb-4 text-center pt-9">
-        Arbitrage Bereau - Start her
+        {config?.title}
       </h2>
       <form onSubmit={(e) => handleSubmit(e)} className="w-1/2 m-auto">
         <div className="mb-4">
           <label htmlFor="siteName" className="block font-medium mb-2">
-            Her er alle de gamblingsites vi kommer til at bruge, tjek af fra
-            listen over de sites du allerede har en konto på (En konto, hvor
-            bonus IKKE er brugt, skal IKKE vinges af)
+            {config?.text}
           </label>
         </div>
 

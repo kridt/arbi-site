@@ -91,9 +91,7 @@ export default function Stage2() {
         </div>
       ) : null}
 
-      <h2 className="text-2xl font-bold mb-4 text-center pt-9">
-        Arbitrage Bereau - Tilmeld dig her
-      </h2>
+      <h2 className="text-2xl font-bold mb-4 text-center pt-9">Din info</h2>
       <form onSubmit={(e) => handleSubmit(e)} className="w-1/2 m-auto ">
         {cleanSites ? (
           <h1>

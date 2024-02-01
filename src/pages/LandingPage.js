@@ -7,7 +7,10 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [wellcome, setWellcome] = useState({});
+  const [wellcome, setWellcome] = useState({
+    title: "Velkommen til vores Arbitrage Bereau",
+    text: "Vil du tjene 1500 kr. på bare 3 timer? Så er du kommet til det rette sted.",
+  });
 
   useEffect(() => {
     if (id === undefined) {
