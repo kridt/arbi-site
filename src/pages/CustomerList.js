@@ -34,7 +34,6 @@ export default function CustomerList() {
           setArchived(archivedClients);
         });
     } else {
-      console.log("no user");
       navigate("/login");
     }
   }, []);
@@ -47,7 +46,6 @@ export default function CustomerList() {
         .doc(id)
         .delete()
         .then(() => {
-          console.log("Document successfully deleted!");
           archiveDocument(id, client);
         })
         .catch((error) => {
@@ -69,7 +67,6 @@ export default function CustomerList() {
       .collection("archived")
       .add(client)
       .then(() => {
-        console.log("Document successfully archived!");
         setArchived((archived) => [...archived, client]);
 
         setClients(clients.filter((client) => client.id !== id));
@@ -121,10 +118,14 @@ export default function CustomerList() {
         {clients?.map((client) => {
           const clientData = client?.data();
           var referral = clientData?.referal;
-
+          var sites = [];
+          if (clientData?.sites !== "clean") {
+            sites = clientData?.sites;
+          }
           if (referral === "") {
             referral = "Ingen Referral";
           }
+          console.log(clientData?.sites);
           return (
             <div
               className="m-4 bg-slate-800 rounded-md flex justify-between p-5"
@@ -136,7 +137,16 @@ export default function CustomerList() {
                 <p>Tlf: {client?.data()?.phone}</p>
                 <p>Email: {client?.data()?.email}</p>
                 <p>Referral: {referral}</p>
-                <p>oprettede sider: {client?.data()?.sites?.length}</p>
+                <p>oprettede sider: {sites?.length}</p>
+                <div>
+                  {sites?.map((site) => {
+                    return (
+                      <div>
+                        <p>{site}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div>
                 <button
@@ -164,10 +174,13 @@ export default function CustomerList() {
         <p>Antal på listen: {archived?.length}</p>
 
         {archived?.map((client) => {
-          console.log(client);
           var referral = client?.referal;
+          var sites = [];
           if (referral === "") {
             referral = "Ingen Referral";
+          }
+          if (client?.sites !== "clean") {
+            sites = client?.sites;
           }
           return (
             <div
@@ -175,7 +188,7 @@ export default function CustomerList() {
               className="m-4 bg-slate-800 rounded-md p-5"
             >
               <p>Kunde oprettet: {client?.dato}</p>
-              <p>Kundens antal sider: {client?.sites.length}</p>
+              <p>Kundens antal sider: {sites?.length}</p>
               <p>Referral: {referral}</p>
             </div>
           );
