@@ -119,13 +119,15 @@ export default function CustomerList() {
           const clientData = client?.data();
           var referral = clientData?.referal;
           var sites = [];
+          var birthDay = clientData?.age.split("-").reverse().join("-");
+
           if (clientData?.sites !== "clean") {
             sites = clientData?.sites;
           }
           if (referral === "") {
             referral = "Ingen Referral";
           }
-          console.log(clientData?.sites);
+
           return (
             <div
               className="m-4 bg-slate-800 rounded-md flex justify-between p-5"
@@ -135,6 +137,7 @@ export default function CustomerList() {
                 <p>dato: {client?.data()?.dato}</p>
                 <p>Navn: {client?.data()?.name}</p>
                 <p>Tlf: {client?.data()?.phone}</p>
+                <p>Fødselsdag: {birthDay}</p>
                 <p>Email: {client?.data()?.email}</p>
                 <p>Referral: {referral}</p>
                 <p>oprettede sider: {sites?.length}</p>
