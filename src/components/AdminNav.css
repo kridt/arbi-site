@@ -1,0 +1,26 @@
+nav > ul > li > a.active {
+  display: block;
+  background-color: hsl(217, 100%, 19%);
+  color: white;
+  border-radius: 5px;
+}
+
+nav > ul > li > a {
+  width: 90%;
+  color: white;
+  display: block;
+}
+
+nav > ul > li > a:hover {
+  color: black;
+  background-color: lightslategray;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  width: 100%;
+}

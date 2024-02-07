@@ -19,11 +19,12 @@ export default function YourCustomers({ uid }) {
     <div>
       <div className="flex justify-between">
         <h1>Dine Kunder</h1>
-        <Link className="underline" to="/admin/kundeliste">
+        <Link className="underline" to="/kundeliste">
           Gå til kundeliste
         </Link>
       </div>
       <p>Du har {customers?.length} kunder på i kø</p>
+
       {customers?.map((customer) => {
         return (
           <div className="m-4 bg-slate-800 rounded-md" key={customer.id}>
