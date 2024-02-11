@@ -13,7 +13,7 @@ nav > ul > li > a {
 
 nav > ul > li > a:hover {
   color: black;
-  background-color: lightslategray;
+  background-color: #25f3fc;
   border-radius: 5px;
   transition: 0.3s;
 }

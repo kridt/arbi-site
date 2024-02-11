@@ -7,6 +7,7 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import CustomerList from "./pages/CustomerList";
 import Custemize from "./pages/Custemize";
+import RateMe from "./pages/RateMe";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/kundeliste" element={<CustomerList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/change" element={<Custemize />} />
+        <Route path="/rateMe/:id" element={<RateMe />} />
       </Routes>
     </BrowserRouter>
   );
