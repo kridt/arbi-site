@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import CustomerList from "./pages/CustomerList";
 import Custemize from "./pages/Custemize";
 import RateMe from "./pages/RateMe";
+import MakeBet from "./pages/MakeBet";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/change" element={<Custemize />} />
         <Route path="/rateMe/:id" element={<RateMe />} />
+        <Route path="/makeBet/:id" element={<MakeBet />} />
       </Routes>
     </BrowserRouter>
   );

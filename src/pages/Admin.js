@@ -16,7 +16,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [owner, setOwner] = useState(false);
   const [sites, setSitess] = useState([]);
-
+  //https://api.the-odds-api.com/v4/sports/soccer_italy_serie_a/odds/?apiKey=61ee5492465ff1ee535056f373cc78fc&regions=eu&markets=h2h
   useEffect(() => {
     if (auth?.currentUser) {
       if (auth?.currentUser?.uid === "oupYxAriFzUIFZuECtrYisK7AgV2") {
