@@ -1,0 +1,86 @@
+[
+  {
+    "siteName": "spreadEx",
+    "homeWin": 3200,
+    "draw": 3600,
+    "awayWin": 2150,
+    "money": 1000
+  },
+  {
+    "siteName": "888sport",
+    "oddsHomeWin": 1600,
+    "oddsDraw": 1800,
+    "oddsAwayWin": 1075,
+    "money": 500
+  },
+  {
+    "siteName": "unibet",
+    "homeWin": 6400,
+    "draw": 7200,
+    "awayWin": 4300,
+    "money": 2000
+  },
+  {
+    "siteName": "leoVegas",
+    "homeWin": 3200,
+    "draw": 3600,
+    "awayWin": 2150,
+    "money": 1000
+  },
+  {
+    "siteName": "comeOn",
+    "homeWin": 3200,
+    "draw": 3600,
+    "awayWin": 2150,
+    "money": 1000
+  },
+  {
+    "siteName": "bwin",
+    "homeWin": 3200,
+    "draw": 3600,
+    "awayWin": 2150,
+    "money": 1000
+  },
+  {
+    "siteName": "nordicBet",
+    "homeWin": 1600,
+    "draw": 1800,
+    "awayWin": 1075,
+    "money": 500
+  },
+  {
+    "siteName": "betsson",
+    "homeWin": 1600,
+    "draw": 1800,
+    "awayWin": 1075,
+    "money": 500
+  },
+  {
+    "siteName": "bet25",
+    "homeWin": 1600,
+    "draw": 1800,
+    "awayWin": 1075,
+    "money": 500
+  },
+  {
+    "siteName": "tipwin",
+    "homeWin": 2560,
+    "draw": 2880,
+    "awayWin": 1720,
+    "money": 1600
+  },
+  {
+    "siteName": "expekt",
+    "homeWin": 3200,
+    "draw": 3600,
+    "awayWin": 2150,
+    "money": 1000
+  },
+  {
+    "siteName": "cashpoint",
+    "homeWin": 1600,
+    "draw": 1800,
+    "awayWin": 1075,
+    "money": 500
+  }
+]

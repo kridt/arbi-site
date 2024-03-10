@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopNavAdmin from "../components/TopNavAdmin";
 import AdminNav from "../components/AdminNav";
 //import { DataGrid } from "@mui/x-data-grid";
@@ -152,7 +152,7 @@ export default function CustomerList() {
               var referral = clientData?.referal;
               var sites = [];
               var birthDay = clientData?.age.split("-").reverse().join("-");
-
+              console.log(client);
               if (clientData?.sites !== "clean") {
                 sites = clientData?.sites;
               }
@@ -183,17 +183,27 @@ export default function CustomerList() {
                       })}
                     </div>
                   </div>
-                  <div>
-                    <button
-                      className={
-                        "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mb-1"
-                      }
-                      onClick={() => {
-                        deleteDocument(client.id, clientData);
-                      }}
-                    >
-                      Fjern og arkiver
-                    </button>
+                  <div className="flex flex-row-reverse">
+                    <div>
+                      <button
+                        className={
+                          "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mb-1"
+                        }
+                        onClick={() => {
+                          deleteDocument(client.id, clientData);
+                        }}
+                      >
+                        Fjern og arkiver
+                      </button>
+                    </div>
+                    <div>
+                      <Link
+                        to={`/makebet/${client.id}`}
+                        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-5 block"
+                      >
+                        Lav første bet
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
