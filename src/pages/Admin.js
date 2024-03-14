@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import YourSites from "../components/YourSites";
-
+import YourReferals from "../components/YourReferals"
 import YourCustomers from "../components/YourCustomers";
 import AdminNav from "../components/AdminNav";
 import TopNavAdmin from "../components/TopNavAdmin";
