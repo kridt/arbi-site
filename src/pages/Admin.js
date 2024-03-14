@@ -118,9 +118,9 @@ export default function Admin() {
               </div>
             </div>
             <div className="flex justify-center">
-              {/* <div className="bg-blue-900 w-80">
+               <div className="bg-blue-900 w-80">
               <YourReferals uid={auth?.currentUser?.uid} />
-            </div> */}
+            </div> 
               <ReferalChart />
             </div>
             <div className="flex justify-center">
