@@ -55,6 +55,14 @@ const sites = [
     name: "CashPoint",
     money: 500,
   },
+  {
+    name: "campobet",
+    money: 500,
+  },
+  {
+    name: "betina",
+    money: 500,
+  },
 ];
 
 export function findMoney(site) {
